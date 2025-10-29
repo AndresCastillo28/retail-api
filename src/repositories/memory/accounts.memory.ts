@@ -12,7 +12,7 @@ export const accountsMemoryRepo: AccountsRepo = {
     const now = new Date();
     const acc: Account = {
       id: randomUUID(),
-      name: input.name,
+      userId: input.userId,
       currency: input.currency,
       balanceMinor: 0n,
       createdAt: now,

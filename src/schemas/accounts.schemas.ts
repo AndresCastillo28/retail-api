@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const createAccountBody = z.object({
-  name: z.string().min(1),
+  userId: z.uuid(),
   currency: z.enum(["USD", "EUR", "COP"]),
 });
 
