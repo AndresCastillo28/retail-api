@@ -3,11 +3,11 @@ import {
   createAccountBody,
   moneyBody,
   transferBody,
-} from "../schemas/accounts.schemas";
-import { wrap } from "../utils/http";
-import { accountsMemoryRepo } from "../repositories/memory/accounts.memory";
-import { transactionsMemoryRepo } from "../repositories/memory/transactions.memory";
-import { TransactionsService } from "../services/transactions.service";
+} from "../schemas/accounts.schemas.js";
+import { wrap } from "../utils/http.js";
+import { accountsMemoryRepo } from "../repositories/memory/accounts.memory.js";
+import { transactionsMemoryRepo } from "../repositories/memory/transactions.memory.js";
+import { TransactionsService } from "../services/transactions.service.js";
 
 const svc = new TransactionsService(accountsMemoryRepo, transactionsMemoryRepo);
 

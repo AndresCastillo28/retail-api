@@ -1,5 +1,5 @@
-import { AccountsRepo } from "../accounts.repo";
-import { Account } from "../../models/account";
+import { AccountsRepo } from "../accounts.repo.js";
+import { Account } from "../../models/account.js";
 import { randomUUID } from "crypto";
 
 const store = new Map<string, Account>();

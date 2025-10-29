@@ -4,7 +4,7 @@ import {
   getAccount,
   deposit,
   withdraw,
-} from "../controllers/accounts.controller";
+} from "../controllers/accounts.controller.js";
 
 export const router = Router();
 

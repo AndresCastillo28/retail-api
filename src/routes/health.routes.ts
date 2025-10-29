@@ -7,7 +7,7 @@
 
 import { Router, Request, Response } from "express";
 import os from "os";
-import packageJson from "../../package.json" assert { type: "json" };
+import packageJson from "../../package.json" with { type: "json" };
 
 export const router = Router();
 

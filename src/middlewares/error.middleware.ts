@@ -24,11 +24,17 @@ export function errorMiddleware(
       "Validation failed:",
       details.map((d) => d.message)
     );
-    return res.status(400).json({ error: "Validation failed", details });
+    return res.status(400).json({
+      error: "Validation failed",
+      timestamp: new Date().toISOString(),
+      details,
+    });
   }
 
   const code = map[err?.message] ?? 400;
-  res
-    .status(code)
-    .json({ error: err?.message ?? "BAD_REQUEST", message: err?.message });
+  res.status(code).json({
+    error: err?.message ?? "BAD_REQUEST",
+    timestamp: new Date().toISOString(),
+    message: err?.message,
+  });
 }
