@@ -4,7 +4,8 @@ export async function testConnection() {
   const connection = await oracledb.getConnection({
     user: process.env.APP_USER,
     password: process.env.APP_USER_PASSWORD,
-    connectString: "localhost:1521/FREEPDB1", // default service in the Free image
+    connectString:
+      process.env.ORACLE_CONNECT_STRING ?? "localhost:1521/FREEPDB1", // default service in the Free image
   });
   const result = await connection.execute(
     `select 'connected' as status from dual`
