@@ -1,0 +1,22 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:23    # 23.x Free DB (multi-arch; good defaults)
+    container_name: oracle-free
+    ports:
+      - "1521:1521"                 # SQL*Net
+      - "5500:5500"                 # (optional) EM Express if enabled
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}      # SYS/SYSTEM password
+      APP_USER: ${APP_USER}                     # auto-create app user
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD}  # app user password
+      # ORACLE_DATABASE: FREEPDB1               # optional: PDB name (default is FREEPDB1)
+    volumes:
+      - oracle-data:/opt/oracle/oradata        # persisted data files
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo 'select 1 from dual;' | sqlplus -s system/${ORACLE_PASSWORD}@localhost:1521/FREEPDB1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  oracle-data:
